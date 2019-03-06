@@ -5,28 +5,28 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     private float m_speed = 5.0f;
+    [SerializeField] private int angleErrorScope;
     //private float m_rotationValue;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        /*if (Input.GetKey(KeyCode.E))
-            m_rotationValue++;
+        float zRot = Mathf.Atan2(Input.GetAxis("Vertical"),
+                            Input.GetAxis("Horizontal")) * (180 / Mathf.PI) + 90;
+        transform.eulerAngles = new Vector3(0,0, zRot);
 
-        if (Input.GetKey(KeyCode.Q))
-            m_rotationValue--;
 
-        if ((int)transform.rotation.z != (int)m_rotationValue)
-            transform.rotation = Quaternion.Euler(0,0,m_rotationValue);
-        */
+        float j2Angle = Mathf.Atan2(Input.GetAxis("J2 Vertical"),
+                            Input.GetAxis("J2 Horizontal")) * (180 / Mathf.PI) + 90;
 
-        Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-
-        transform.Translate(Movement * Time.deltaTime * m_speed);
+        if (j2Angle >= transform.rotation.eulerAngles.z - 90 + angleErrorScope &&
+            j2Angle <= transform.rotation.eulerAngles.z - 90 - angleErrorScope)
+            Debug.Log("yes" + transform.rotation.eulerAngles.z + "  " + j2Angle);    
+        //transform.position += transform.up;
     }
 }
