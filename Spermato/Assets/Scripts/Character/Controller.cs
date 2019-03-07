@@ -12,10 +12,10 @@ public class Controller : MonoBehaviour
     private float j2Angle = 5.0f;
 
     private Rigidbody2D m_rb;
-        float leftJoyStickHorizValue = Input.GetAxis("Horizontal");
-        float leftJoyStickVertValue = Input.GetAxis("Vertical");
-        float rightJoyStickHorizValue = Input.GetAxis("J2 Horizontal");
-        float rightJoyStickVertValue = Input.GetAxis("J2 Vertical");
+        float leftJoyStickHorizValue;
+        float leftJoyStickVertValue;
+        float rightJoyStickHorizValue;
+        float rightJoyStickVertValue;
 
     // Use this for initialization
     void Start()
@@ -54,7 +54,5 @@ public class Controller : MonoBehaviour
             isLeft = !isLeft;
             m_rb.velocity += new Vector2(transform.up.x, transform.up.y) * m_baseSpeed;
         }
-
-        //transform.position += transform.up;
     }
 }
