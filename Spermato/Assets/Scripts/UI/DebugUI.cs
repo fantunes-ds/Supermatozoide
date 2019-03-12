@@ -18,7 +18,7 @@ public class DebugUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isLeft = m_characterRef.GetComponent<Controller>().isLeft;
+        //isLeft = m_characterRef.GetComponent<Controller>().isLeft;
 
         int detectionOffset = 90;
         if (isLeft)
