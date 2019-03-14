@@ -15,9 +15,14 @@ public class Pick_Up_Collision : MonoBehaviour {
 	   	
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Boost")
+        {
+            Debug.Log("CollisionEntered");
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
