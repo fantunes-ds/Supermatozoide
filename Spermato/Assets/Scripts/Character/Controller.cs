@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA.Persistence;
 
 public class Controller : MonoBehaviour
 {
     private bool isLeft;
+    private bool canInput;
 
     [SerializeField] [Tooltip("Half the amount per side. ie: 20 = 10 L + 10 R")]
     private int angleErrorScope;
@@ -15,7 +17,7 @@ public class Controller : MonoBehaviour
     [SerializeField] [Tooltip("The max amount of velocity that can be achieved. Affects the gauge")]
     public float m_maxSpeed = 100f;
 
-    private float m_progesterone = 1.0f;
+    public float m_progesterone { get; private set; }
     public float m_finalSpeed { get; private set; }
 
     private float m_zRot = 0.0f;
@@ -33,6 +35,7 @@ public class Controller : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_finalSpeed = m_baseSpeed * m_progesterone;
+        m_progesterone = 1.0f;
     }
 
     // Update is called once per frame
@@ -62,6 +65,11 @@ public class Controller : MonoBehaviour
     void CheckDisplacement()
     {
         if (Input.GetAxis("J2 Vertical") == 0 && Input.GetAxis("J2 Horizontal") == 0)
+        {
+            canInput = true;
+            return;
+        }
+        if (!canInput)
             return;
 
         int detectionOffset = 90;
@@ -73,6 +81,7 @@ public class Controller : MonoBehaviour
             detectionOffset *= -1;
 
         m_finalSpeed = m_baseSpeed * m_progesterone;
+        
         //m_zRot is defined in SetRotation()
         float minimumValue = m_zRot - detectionOffset - (angleErrorScope * 0.5f);
         float maximumValue = m_zRot - detectionOffset + (angleErrorScope * 0.5f);
@@ -89,6 +98,7 @@ public class Controller : MonoBehaviour
                 m_rb.velocity += new Vector2(transform.up.x, transform.up.y) * m_finalSpeed;
                 isLeft = !isLeft;
             }
+            canInput = false;
         }
         /*else if ((j2Angle < minimumValue || j2Angle > maximumValue)
                  ||
@@ -96,11 +106,17 @@ public class Controller : MonoBehaviour
                  ||
                  (j2Angle < minimumValue + 360 || j2Angle > maximumValue + 360)) // + one turn
         {
-            if (m_rb.velocity.magnitude + (transform.up.magnitude * m_finalSpeed) < m_maxSpeed)
+            if (m_rb.velocity.magnitude + (transform.up.magnitude * m_finalSpeed) > 1)
             {
                 m_rb.velocity -= new Vector2(transform.up.x, transform.up.y) * m_finalSpeed;
                 isLeft = !isLeft;
             }
+            canInput = false;
         }*/
+    }
+
+    public void AddProgesterone()
+    {
+        m_progesterone += 1;
     }
 }
