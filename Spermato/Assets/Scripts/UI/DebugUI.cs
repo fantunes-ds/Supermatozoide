@@ -25,9 +25,9 @@ public class DebugUI : MonoBehaviour
             detectionOffset *= -1;
 
         int j1Input = (int) (Mathf.Atan2(Input.GetAxis("Vertical"),
-                                 Input.GetAxis("Horizontal")) * (180 / Mathf.PI) + 270);
+                                 Input.GetAxis("Horizontal")) * Mathf.Rad2Deg + 270);
         int j2Input = (int) (Mathf.Atan2(Input.GetAxis("J2 Vertical"),
-                                         Input.GetAxis("J2 Horizontal")) * (180 / Mathf.PI) + 270);
+                                         Input.GetAxis("J2 Horizontal")) * Mathf.Rad2Deg + 270);
 
         m_texts[0].text = "Left Joystick Angle : " + j1Input;
         m_texts[1].text = "Right Joystick Angle : " + j2Input;
