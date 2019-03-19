@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR.WSA.Persistence;
 
@@ -35,6 +36,7 @@ public class Controller : MonoBehaviour
     private float m_rightJoyStickVertValue;
 
     private Rigidbody2D m_rb;
+    private Vector3 m_oldPosition;
 
     // Use this for initialization
     void Start()
@@ -56,8 +58,8 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             return;
 
-        if (m_rb.velocity.magnitude > 0 && m_rb.velocity.magnitude < m_maxSpeed)
-            m_rb.AddForce(new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage / m_rb.velocity.magnitude);
+        if (m_rb.velocity.magnitude > 1f && m_rb.velocity.magnitude < m_maxSpeed && Vector2.Angle(m_rb.velocity, (Vector2)transform.up) > 60)
+            m_rb.AddForce((new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage) / (m_rb.velocity.magnitude * m_finalSpeed));
 
         if (m_leftJoyStickHorizValue != Input.GetAxis("Horizontal") || m_leftJoyStickVertValue != Input.GetAxis("Vertical"))
         {
@@ -69,6 +71,8 @@ public class Controller : MonoBehaviour
 
         if (m_zRot != transform.rotation.eulerAngles.z)
             transform.eulerAngles = new Vector3(0, 0, m_zRot);
+
+        m_oldPosition = transform.position;
     }
 
     void CheckDisplacement()
