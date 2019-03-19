@@ -2784,7 +2784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_angleErrorScope: 40
   m_baseSpeed: 0.5
-  m_airTimePercentage: 0.5
+  m_airTimePercentage: 3.05
   m_progesteroneBoost: 0.05
   m_maxSpeed: 100
 --- !u!50 &736474494

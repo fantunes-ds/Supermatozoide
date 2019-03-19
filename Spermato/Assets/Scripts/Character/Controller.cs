@@ -14,8 +14,8 @@ public class Controller : MonoBehaviour
     [SerializeField] [Tooltip("Constant base speed for the player")]
     private float m_baseSpeed = 1.0f;
 
-    [SerializeField] [Tooltip("Ajoute du AirTime")][Range(0, 1)]
-    private float m_airTimePercentage = 0.1f;
+    [SerializeField] [Tooltip("Ajoute du AirTime")][Range(0, 5)]
+    private float m_airTimePercentage = 1f;
 
     [SerializeField][Tooltip("How much should the progesterone boost be (0 to 1 = 0 to 100%)")][Range(0,1)]
     private float m_progesteroneBoost = 0.05f;
@@ -56,7 +56,8 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             return;
 
-        m_rb.AddForce(new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage * m_rb.velocity.magnitude);
+        if (m_rb.velocity.magnitude > 0 && m_rb.velocity.magnitude < m_maxSpeed)
+            m_rb.AddForce(new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage / m_rb.velocity.magnitude);
 
         if (m_leftJoyStickHorizValue != Input.GetAxis("Horizontal") || m_leftJoyStickVertValue != Input.GetAxis("Vertical"))
         {
@@ -79,6 +80,7 @@ public class Controller : MonoBehaviour
         }
         if (!m_canInput)
             return;
+
 
         int detectionOffset = 90;
 

@@ -34,7 +34,7 @@ public class DebugUI : MonoBehaviour
         m_texts[2].text = "TargetAngle : Between " +
                           (j1Input - detectionOffset + (angleErrorScope * 0.5f)) +
                           " and " +
-                          (j1Input - detectionOffset + (angleErrorScope * 0.5f));
+                          (j1Input + detectionOffset + (angleErrorScope * 0.5f));
         m_texts[3].text = "HorizAxisValue : " + Input.GetAxis("J2 Horizontal");
         m_texts[4].text = "VertAxisValue : " + Input.GetAxis("J2 Vertical");
     }
