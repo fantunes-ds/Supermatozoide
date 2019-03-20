@@ -2025,7 +2025,7 @@ GameObject:
   - component: {fileID: 736474493}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,7 +2070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angleErrorScope: 40
-  m_baseSpeed: 1
+  m_baseSpeed: 20
   m_airTimePercentage: 1
   m_progesteroneBoost: 0.05
   m_maxSpeed: 10
