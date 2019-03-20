@@ -51,13 +51,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335800685238790}
+  - component: {fileID: 61267025301229422}
+  - component: {fileID: 50409099046993750}
   - component: {fileID: 114465646659807512}
   - component: {fileID: 114828945434516098}
-  - component: {fileID: 50409099046993750}
-  - component: {fileID: 61267025301229422}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a578d8ab00d8af34aa87c086ff106203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleErrorScope: 40
-  m_baseSpeed: 0.5
-  m_maxSpeed: 100
+  m_baseSpeed: 20
+  m_airTimePercentage: 1
+  m_progesteroneBoost: 0.05
+  m_maxSpeed: 10
 --- !u!114 &114828945434516098
 MonoBehaviour:
   m_ObjectHideFlags: 1

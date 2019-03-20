@@ -2001,7 +2001,6 @@ GameObject:
   - component: {fileID: 736474497}
   - component: {fileID: 736474496}
   - component: {fileID: 736474495}
-  - component: {fileID: 736474494}
   - component: {fileID: 736474493}
   m_Layer: 0
   m_Name: Character
@@ -2038,22 +2037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tagName: Progesterone
---- !u!114 &736474494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736474491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023b0746aeb519c438b4d58e17314ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_angleErrorScope: 40
-  m_baseSpeed: 20
-  m_airTimePercentage: 1
-  m_progesteroneBoost: 0.05
-  m_maxSpeed: 10
 --- !u!114 &736474495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,17 +2044,15 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 736474491}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a578d8ab00d8af34aa87c086ff106203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_angleErrorScope: 40
-  m_baseSpeed: 0.5
+  m_baseSpeed: 20
   m_airTimePercentage: 1
   m_progesteroneBoost: 0.05
-  m_maxSpeed: 100
-  m_finalSpeed: 0
+  m_maxSpeed: 10
 --- !u!50 &736474496
 Rigidbody2D:
   serializedVersion: 4
