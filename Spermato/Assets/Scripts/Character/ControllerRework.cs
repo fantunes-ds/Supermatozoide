@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR.WSA.Persistence;
 
-public class Controller : MonoBehaviour
+public class ControllerRework : MonoBehaviour
 {
     private bool m_isLeft;
     private bool m_canInput;
@@ -25,7 +25,7 @@ public class Controller : MonoBehaviour
     public float m_maxSpeed = 100f;
 
     public float m_progesterone { get; private set; }
-    public float m_finalSpeed;
+    public float m_finalSpeed { get; private set; }
 
     private float m_zRot;
     private float m_j2Angle = 5.0f;
@@ -54,7 +54,7 @@ public class Controller : MonoBehaviour
 
     void SetRotation()
     {
-        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        if (Input.GetAxis("Vertical") == 0.0f && Input.GetAxis("Horizontal") == 0.0f)
             return;
 
         if (m_rb.velocity.magnitude > 1f && m_rb.velocity.magnitude < m_maxSpeed && Vector2.Angle(m_rb.velocity, transform.up) > 60)
@@ -74,7 +74,7 @@ public class Controller : MonoBehaviour
 
     void CheckDisplacement()
     {
-        if (Input.GetAxis("J2 Vertical") == 0 && Input.GetAxis("J2 Horizontal") == 0)
+        if (Mathf.RoundToInt(Input.GetAxis("J2 Horizontal")) == 0)
         {
             m_canInput = true;
             return;
@@ -82,35 +82,25 @@ public class Controller : MonoBehaviour
         if (!m_canInput)
             return;
 
+        m_rightJoyStickHorizValue = Mathf.RoundToInt(Input.GetAxisRaw("J2 Horizontal"));
+        int axisTargetValue = 1;
 
-        int detectionOffset = 90;
-
-        m_j2Angle = Mathf.Atan2(Input.GetAxis("J2 Vertical"),
-                      Input.GetAxis("J2 Horizontal")) * Mathf.Rad2Deg + 270;
+        //m_j2Angle = Mathf.Atan2(Input.GetAxis("J2 Vertical"),
+                      //Input.GetAxis("J2 Horizontal")) * Mathf.Rad2Deg + 270;
 
         if (m_isLeft)
-            detectionOffset *= -1;
+            axisTargetValue *= -1;
 
         m_finalSpeed = m_baseSpeed * m_progesterone;
-        
-        //m_zRot is defined in SetRotation()
-        float minimumValue = m_zRot - detectionOffset - (m_angleErrorScope * 0.5f);
-        float maximumValue = m_zRot - detectionOffset + (m_angleErrorScope * 0.5f);
 
-
-        if ((m_j2Angle >= minimumValue && m_j2Angle <= maximumValue)
-            ||
-            (m_j2Angle >= minimumValue - 360 && m_j2Angle <= maximumValue - 360) // - one turn
-            ||
-            (m_j2Angle >= minimumValue + 360 && m_j2Angle <= maximumValue + 360)) // + one turn
+        if (m_rightJoyStickHorizValue == axisTargetValue)
         {
-            if (m_rb.velocity.magnitude + (transform.up.magnitude * m_finalSpeed) < m_maxSpeed)
-            {
-                m_rb.velocity += new Vector2(transform.up.x, transform.up.y) * m_finalSpeed;
-                m_isLeft = !m_isLeft;
-            }
+            if ((m_rb.velocity + new Vector2(transform.up.x, transform.up.y) * m_finalSpeed).magnitude <= m_maxSpeed)
+            m_rb.velocity += new Vector2(transform.up.x, transform.up.y) * m_finalSpeed;
             m_canInput = false;
+            m_isLeft = !m_isLeft;
         }
+
     }
 
     public void AddProgesterone()

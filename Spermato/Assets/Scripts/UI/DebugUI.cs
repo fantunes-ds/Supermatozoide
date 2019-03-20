@@ -26,8 +26,8 @@ public class DebugUI : MonoBehaviour
 
         int j1Input = (int) (Mathf.Atan2(Input.GetAxis("Vertical"),
                                  Input.GetAxis("Horizontal")) * Mathf.Rad2Deg + 270);
-        int j2Input = (int) (Mathf.Atan2(Input.GetAxis("J2 Vertical"),
-                                         Input.GetAxis("J2 Horizontal")) * Mathf.Rad2Deg + 270);
+        int j2Input = (int) (Mathf.Atan2(Input.GetAxisRaw("J2 Vertical"),
+                                         Input.GetAxisRaw("J2 Horizontal")) * Mathf.Rad2Deg + 270);
 
         m_texts[0].text = "Left Joystick Angle : " + j1Input;
         m_texts[1].text = "Right Joystick Angle : " + j2Input;
@@ -35,7 +35,7 @@ public class DebugUI : MonoBehaviour
                           (j1Input - detectionOffset + (angleErrorScope * 0.5f)) +
                           " and " +
                           (j1Input + detectionOffset + (angleErrorScope * 0.5f));
-        m_texts[3].text = "HorizAxisValue : " + Input.GetAxis("J2 Horizontal");
-        m_texts[4].text = "VertAxisValue : " + Input.GetAxis("J2 Vertical");
+        m_texts[3].text = "HorizAxisValue : " + Mathf.RoundToInt(Input.GetAxisRaw("J2 Horizontal"));
+        m_texts[4].text = "VertAxisValue : " + Input.GetAxisRaw("J2 Vertical");
     }
 }

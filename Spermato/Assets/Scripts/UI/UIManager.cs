@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        m_gaugeValue = m_playerRef.GetComponent<Rigidbody2D>().velocity.magnitude / m_playerRef.GetComponent<Controller>().m_maxSpeed;
+        m_gaugeValue = m_playerRef.GetComponent<Rigidbody2D>().velocity.magnitude / m_playerRef.GetComponent<ControllerRework>().m_maxSpeed;
         m_speedGauge.fillAmount = m_gaugeValue;
         m_progesteroneText.text = "Progesterone Level : " + m_playerRef.GetComponent<Controller>().m_progesterone;
     }
