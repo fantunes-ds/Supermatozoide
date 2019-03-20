@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour
     [SerializeField] [Tooltip("Constant base speed for the player")]
     private float m_baseSpeed = 1.0f;
 
-    [SerializeField] [Tooltip("Ajoute du AirTime")][Range(0, 5)]
+    [SerializeField] [Tooltip("Ajoute du AirTime")][Range(0, 100)]
     private float m_airTimePercentage = 1f;
 
     [SerializeField][Tooltip("How much should the progesterone boost be (0 to 1 = 0 to 100%)")][Range(0,1)]
