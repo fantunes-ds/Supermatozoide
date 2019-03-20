@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Geyser : MonoBehaviour
 {
-    public enum GeyserType
-    {
-        Positive,
-        Negative
-    }
-
-    public GeyserType m_geyserType;
-
-    private Collider2D m_col;
     private ParticleSystem m_ps;
+
+    [SerializeField] private float m_pushForce;
 
     private float m_timer;
     private bool m_isFlowing;
@@ -22,6 +15,8 @@ public class Geyser : MonoBehaviour
     void Start()
     {
         m_ps = GetComponentInChildren<ParticleSystem>();
+        var col = m_ps.collision;
+        col.colliderForce = m_pushForce;
         ResetToActive();
     }
 
