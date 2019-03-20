@@ -62,7 +62,7 @@ public class Controller : MonoBehaviour
         if (m_rb.velocity.magnitude > 1f && m_rb.velocity.magnitude < m_maxSpeed &&
             Vector2.Angle(m_rb.velocity, transform.up) > 60)
             m_rb.AddForce((new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage) /
-                          (m_rb.velocity.magnitude * m_finalSpeed));
+                          (m_rb.velocity.magnitude ));
 
         m_zRot = Mathf.Atan2(m_leftJoyStickAxis.y,
                          m_leftJoyStickAxis.x) * Mathf.Rad2Deg + 270;

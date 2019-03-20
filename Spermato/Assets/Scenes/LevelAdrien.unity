@@ -6890,37 +6890,12 @@ Prefab:
     - target: {fileID: 114465646659807512, guid: 2a2d945f500c6ed4e803f48d3b93f365,
         type: 2}
       propertyPath: m_airTimePercentage
-      value: 38.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465646659807512, guid: 2a2d945f500c6ed4e803f48d3b93f365,
-        type: 2}
-      propertyPath: m_angleErrorScope
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465646659807512, guid: 2a2d945f500c6ed4e803f48d3b93f365,
-        type: 2}
-      propertyPath: m_baseSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465646659807512, guid: 2a2d945f500c6ed4e803f48d3b93f365,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465646659807512, guid: 2a2d945f500c6ed4e803f48d3b93f365,
-        type: 2}
-      propertyPath: m_maxSpeed
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 50409099046993750, guid: 2a2d945f500c6ed4e803f48d3b93f365,
         type: 2}
       propertyPath: m_LinearDrag
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 50409099046993750, guid: 2a2d945f500c6ed4e803f48d3b93f365,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a2d945f500c6ed4e803f48d3b93f365, type: 2}
@@ -8184,22 +8159,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1576480141590824, guid: 2a2d945f500c6ed4e803f48d3b93f365,
     type: 2}
   m_PrefabInternal: {fileID: 1399663792}
---- !u!114 &1833470918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833470913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023b0746aeb519c438b4d58e17314ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_angleErrorScope: 40
-  m_baseSpeed: 1.5
-  m_airTimePercentage: 13
-  m_progesteroneBoost: 0.05
-  m_maxSpeed: 10
 --- !u!1 &1834936798
 GameObject:
   m_ObjectHideFlags: 0
