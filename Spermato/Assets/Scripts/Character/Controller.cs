@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
 {
     private bool m_isLeft;
     private bool m_canInput;
+    private bool m_canTrigger;
 
     #region PublicParameters
     [SerializeField]
@@ -22,6 +23,9 @@ public class Controller : MonoBehaviour
 
     [SerializeField] [Tooltip("How much should the progesterone boost force be (5 is a lot)")]
     private float m_progesteroneBoostForce = 5;
+    [SerializeField] [Tooltip("How much should the progesterone boost force decrease the progesterone bar (0 to 1 = 0 to 100%)")]
+    [Range(0, 1)]
+    private float m_progesteroneLossPerBoost = 0.5f;
 
     [Tooltip("Maximum Progesterone that can be stored (affects the bar)")][Range(0,10)]
     public float m_maxProgesterone = 1f;
@@ -101,11 +105,15 @@ public class Controller : MonoBehaviour
 
     public void ProgesteroneJauge()
     {
-        if (Input.GetAxisRaw("Trigger Right").Equals(1))
+        if (Input.GetAxisRaw("Trigger Right").Equals(1) && m_canTrigger)
         {
             m_rb.AddForce(transform.up * m_progesterone * m_progesteroneBoostForce,ForceMode2D.Impulse);
-            m_progesterone = 0;
+            m_progesterone -= m_progesteroneLossPerBoost;
+            m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
+            m_canTrigger = false;
         }
+        else if (Input.GetAxisRaw("Trigger Right").Equals(0) && m_canTrigger == false)
+            m_canTrigger = true;
     }
 
     public void AddProgesterone()
