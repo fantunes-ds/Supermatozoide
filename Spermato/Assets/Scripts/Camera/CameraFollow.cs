@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (m_target != null)
         m_camPos = new Vector3(Mathf.SmoothStep(transform.position.x, m_target.transform.position.x, m_travelTime), Mathf.SmoothStep(transform.position.y, m_target.transform.position.y, m_travelTime));
     }
 
