@@ -7,7 +7,7 @@ public class SplitScreenManager : MonoBehaviour
     private Camera m_mainCamera;
     [SerializeField] private Camera m_cameraPrefab;
     private List<Camera> m_splitCameras;
-    private int currentNumberOfCameras;
+    private int currentNumberOfCameras = 1;
 
 	// Use this for initialization
 	void Start ()
@@ -15,14 +15,14 @@ public class SplitScreenManager : MonoBehaviour
         m_mainCamera = GameObject.FindGameObjectWithTag("Main Camera").GetComponent<Camera>();
         m_splitCameras = new List<Camera>();
         m_splitCameras.Add(m_mainCamera);
-        UpdateSplitScreen(1);
+        UpdateSplitScreen(currentNumberOfCameras);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         if(Input.GetKeyDown(KeyCode.Q))
-            UpdateSplitScreen(currentNumberOfCameras++);
+            UpdateSplitScreen(++currentNumberOfCameras);
     }
 
     private void UpdateSplitScreen(int p_numberOfScreens)
@@ -55,8 +55,6 @@ public class SplitScreenManager : MonoBehaviour
                 Debug.Log("[SPLIT SCREEN] Format not supported : " + p_numberOfScreens + " screens is not acceptable");
                 break;
         }
-        GL.Clear(true,true,Color.black,0);
-        GL.Flush();
     }
 
     void CheckCameraAvailability(int p_numberOfCameras)
