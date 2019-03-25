@@ -7,22 +7,33 @@ public class SplitScreenManager : MonoBehaviour
     private Camera m_mainCamera;
     [SerializeField] private Camera m_cameraPrefab;
     private List<Camera> m_splitCameras;
-    private int currentNumberOfCameras = 1;
+    [SerializeField] private int m_currentNumberOfCameras = 1;
+
+    public static SplitScreenManager m_instance;
 
 	// Use this for initialization
 	void Start ()
     {
+        if (m_instance == null)
+        {
+            m_instance = this;
+            DontDestroyOnLoad(m_instance.gameObject);
+        }
+        else if (m_instance != null)
+            Destroy(m_instance.gameObject);
+
+
         m_mainCamera = GameObject.FindGameObjectWithTag("Main Camera").GetComponent<Camera>();
         m_splitCameras = new List<Camera>();
         m_splitCameras.Add(m_mainCamera);
-        UpdateSplitScreen(currentNumberOfCameras);
+        UpdateSplitScreen(m_currentNumberOfCameras);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         if(Input.GetKeyDown(KeyCode.Q))
-            UpdateSplitScreen(++currentNumberOfCameras);
+            UpdateSplitScreen(++m_currentNumberOfCameras);
     }
 
     private void UpdateSplitScreen(int p_numberOfScreens)

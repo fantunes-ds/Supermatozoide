@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
     public Color[] m_colors;
     public List<Image> m_masks;
     public List<TextMeshProUGUI> m_status;
-    private int m_connections;
+    public List<TextMeshProUGUI> m_playerName;
+    private int m_connections = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -18,13 +19,15 @@ public class MainMenu : MonoBehaviour
         foreach (TextMeshProUGUI t in m_status)
         {
             t.text = "Unplugged";
-        }	
-	}
+        }
 
-    void CheckConnections()
+        StartCoroutine(CheckConnections());
+    }
+
+    IEnumerator CheckConnections()
     {
         if (m_connections == Input.GetJoystickNames().Length)
-            return;
+            yield return new WaitForSeconds(1);
 
         m_connections = Input.GetJoystickNames().Length;
 
@@ -32,25 +35,30 @@ public class MainMenu : MonoBehaviour
         {
             m_status[i].text = "Plugged in";
             m_status[i].color = m_colors[1];
-            StartCoroutine(FadeOut(m_masks[i]));
+            m_playerName[i].color = m_colors[1];
+            StartCoroutine(FadeIn(m_masks[i]));
         }
 
-        for (int i = m_connections; i < m_connections; ++i)
+        for (int i = m_connections; i < 3; ++i)
         {
-            
+            m_status[i].text = "Unplugged";
+            m_status[i].color = m_colors[0];
+            m_playerName[i].color = m_colors[0];
+            StartCoroutine(FadeOut(m_masks[i]));
         }
+            yield return new WaitForSeconds(2);
 
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        CheckConnections();
+        Debug.Log(m_connections);
 	}
 
     IEnumerator FadeIn(Image p_image)
     {
-        for (float f = 1f; f >= 0f; f -= Time.deltaTime)
+        for (float f = 0.5f; f >= 0f; f -= Time.deltaTime)
         {
             p_image.color = new Color(p_image.color.r, p_image.color.g,
                                       p_image.color.b, f);
@@ -60,7 +68,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeOut(Image p_image)
     {
-        for (float f = 0f; f >= 1f; f -= Time.deltaTime)
+        for (float f = 0f; f >= 0.5f; f += Time.deltaTime)
         {
             p_image.color = new Color(p_image.color.r, p_image.color.g,
                                       p_image.color.b, f);

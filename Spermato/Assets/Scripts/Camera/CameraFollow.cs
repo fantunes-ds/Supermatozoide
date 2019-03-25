@@ -9,6 +9,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 m_offset = new Vector3(0, 0, -1);
     [SerializeField] private float m_travelTime = 0.3f;
 
+    void Start()
+    {
+        if (m_target == null)
+            m_target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     void FixedUpdate()
     {
         if (m_target != null)
