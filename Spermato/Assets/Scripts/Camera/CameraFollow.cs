@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,18 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         if (m_target == null)
-            m_target = GameObject.FindGameObjectWithTag("Player").transform;
+        {
+            try
+            {
+                m_target = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+        }
     }
+
 
     void FixedUpdate()
     {

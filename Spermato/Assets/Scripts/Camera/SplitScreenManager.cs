@@ -6,20 +6,20 @@ public class SplitScreenManager : MonoBehaviour
 {
     [SerializeField] private Camera m_cameraPrefab;
     private List<Camera> m_splitCameras;
-    [SerializeField] private int m_currentNumberOfCameras = 1;
+    private int m_currentNumberOfCameras = 1;
 
     public static SplitScreenManager m_instance;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         if (m_instance == null)
         {
             m_instance = this;
-            DontDestroyOnLoad(m_instance.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else if (m_instance != null)
-            Destroy(m_instance.gameObject);
+            Destroy(gameObject);
         
         m_splitCameras = new List<Camera>();
         UpdateSplitScreen(m_currentNumberOfCameras);
@@ -75,6 +75,16 @@ public class SplitScreenManager : MonoBehaviour
         else
             for (int i = p_numberOfCameras - 1; i < m_splitCameras.Count - 1; i++)
                 m_splitCameras[i].gameObject.SetActive(false);
+    }
+
+    public void Refresh()
+    {
+        UpdateSplitScreen(m_currentNumberOfCameras);
+    }
+
+    public void SetCameraNumber(int p_nbOfCameras)
+    {
+        m_currentNumberOfCameras = p_nbOfCameras;
     }
 }
 

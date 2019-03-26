@@ -46,15 +46,9 @@ public class MainMenu : MonoBehaviour
             m_playerName[i].color = m_colors[0];
             StartCoroutine(FadeOut(m_masks[i]));
         }
-            yield return new WaitForSeconds(2);
-
+        SplitScreenManager.m_instance.SetCameraNumber(m_connections);
+        yield return new WaitForSeconds(2);
     }
-
-	// Update is called once per frame
-	void Update ()
-    {
-        Debug.Log(m_connections);
-	}
 
     IEnumerator FadeIn(Image p_image)
     {
