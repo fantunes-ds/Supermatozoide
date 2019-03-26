@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 		if (m_playerRef == null)
             m_playerRef = GameObject.FindGameObjectWithTag("Player");
 
-        m_playerRB = m_playerRef.GetComponent<Rigidbody2D>();
+        m_playerRB = GameManager.m_instance.m_playerList[0].GetComponent<Rigidbody2D>();
         m_playerController = m_playerRef.GetComponent<Controller>();
     }
 	

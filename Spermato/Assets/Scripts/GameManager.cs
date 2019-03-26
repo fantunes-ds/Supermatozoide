@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public string m_levelName;
     public static GameManager m_instance;
 
+    public GameObject m_playerPrefab;
+    public List<GameObject> m_playerList;
+
     void Start()
     {
         if (m_instance == null)
@@ -23,5 +26,12 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene(m_levelName);
+    }
+
+    public GameObject AddPlayer()
+    {
+        GameObject newPlayer = Instantiate(m_playerPrefab, Vector3.zero, Quaternion.identity);
+        m_playerList.Add(newPlayer);
+        return newPlayer;
     }
 }
