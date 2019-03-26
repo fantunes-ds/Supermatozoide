@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject AddPlayer()
     {
-        GameObject newPlayer = Instantiate(m_playerPrefab, Vector3.zero, Quaternion.identity);
+        GameObject newPlayer = Instantiate(m_playerPrefab, Vector3.zero, Quaternion.identity, transform);
+        newPlayer.name = "P" + (m_playerList.Count + 1);
         m_playerList.Add(newPlayer);
         return newPlayer;
     }

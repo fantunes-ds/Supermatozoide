@@ -59,7 +59,7 @@ public class Controller : MonoBehaviour
 
     void SetRotation()
     {
-        m_leftJoyStickAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        m_leftJoyStickAxis = new Vector2(Input.GetAxis(gameObject.name + "-LeftStick-Horizontal"), Input.GetAxis(gameObject.name + "-LeftStick-Vertical"));
         if (m_leftJoyStickAxis.x.Equals(0.0f) && m_leftJoyStickAxis.y.Equals(0.0f))
             return;
 
@@ -77,7 +77,7 @@ public class Controller : MonoBehaviour
 
     void CheckDisplacement()
     {
-        m_rightJoyStickAxis = new Vector2(Mathf.RoundToInt(Input.GetAxis("J2 Horizontal")), Mathf.RoundToInt(Input.GetAxis("J2 Vertical")));
+        m_rightJoyStickAxis = new Vector2(Mathf.RoundToInt(Input.GetAxis(gameObject.name + "-RightStick-Horizontal")), Mathf.RoundToInt(Input.GetAxis(gameObject.name + "-RightStick-Vertical")));
 
         if (m_rightJoyStickAxis.x.Equals(0))
         {
@@ -105,14 +105,14 @@ public class Controller : MonoBehaviour
 
     public void ProgesteroneJauge()
     {
-        if (Input.GetAxisRaw("Trigger Right").Equals(1) && m_canTrigger)
+        if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(1) && m_canTrigger)
         {
             m_rb.AddForce(transform.up * m_progesterone * m_progesteroneBoostForce,ForceMode2D.Impulse);
             m_progesterone -= m_progesteroneLossPerBoost;
             m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
             m_canTrigger = false;
         }
-        else if (Input.GetAxisRaw("Trigger Right").Equals(0) && m_canTrigger == false)
+        else if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(0) && m_canTrigger == false)
             m_canTrigger = true;
     }
 
