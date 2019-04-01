@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindWithTag("SpawnPoint") != null)
             m_spawnPoint = GameObject.FindWithTag("SpawnPoint").transform.position;
         else
-        m_spawnPoint = Vector3.zero;
-        
+            m_spawnPoint = Vector3.zero;
+
     }
     
     void Update()
@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
             return;
         SplitScreenManager.m_instance.Refresh();
         m_lastScene = SceneManager.GetActiveScene();
+        if (GameObject.FindWithTag("SpawnPoint") != null)
+            m_spawnPoint = GameObject.FindWithTag("SpawnPoint").transform.position;
+        else
+            m_spawnPoint = Vector3.zero;
+        foreach (GameObject m_go in m_playerList)
+        {
+            m_go.transform.position = m_spawnPoint;
+        }
     }
 
     public void LoadGame()
