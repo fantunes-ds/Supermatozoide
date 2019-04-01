@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     public static GameManager m_instance; 
     [SerializeField] private string m_levelName;
     [SerializeField] private GameObject m_playerPrefab;
-    private List<GameObject> m_playerList;
+    public List<GameObject> m_playerList { private set; get; }
     private Scene m_lastScene;
     private GameObject m_playerContainer;
 
-    void Awake()
+    void Start()
     {
         if (m_instance == null)
         {
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     {
         if (m_lastScene == SceneManager.GetActiveScene())
             return;
-        m_playerList.Clear();
         SplitScreenManager.m_instance.Refresh();
         m_lastScene = SceneManager.GetActiveScene();
     }

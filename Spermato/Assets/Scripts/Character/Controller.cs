@@ -54,7 +54,7 @@ public class Controller : MonoBehaviour
     {
         SetRotation();
         CheckDisplacement();
-        ProgesteroneJauge();
+        ProgesteroneGauge();
     }
 
     void SetRotation()
@@ -103,7 +103,7 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void ProgesteroneJauge()
+    public void ProgesteroneGauge()
     {
         if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(1) && m_canTrigger)
         {

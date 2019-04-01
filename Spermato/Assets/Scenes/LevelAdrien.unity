@@ -2841,7 +2841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &532684838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4545,7 +4545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerRef: {fileID: 1833470913}
   m_speedGauge: {fileID: 608195037}
-  m_progesteroneText: {fileID: 1963666322}
+  m_progesteroneGauge: {fileID: 0}
 --- !u!114 &934606255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10114,7 +10114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerRef: {fileID: 1833470913}
   m_speedGauge: {fileID: 903183100}
-  m_progesteroneText: {fileID: 1295485626}
+  m_progesteroneGauge: {fileID: 0}
 --- !u!114 &2142703997
 MonoBehaviour:
   m_ObjectHideFlags: 0

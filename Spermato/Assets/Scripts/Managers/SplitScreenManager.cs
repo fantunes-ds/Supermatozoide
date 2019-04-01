@@ -6,12 +6,12 @@ public class SplitScreenManager : MonoBehaviour
 {
     [SerializeField] private Camera m_cameraPrefab;
     private List<Camera> m_splitCameras;
-    private int m_currentNumberOfCameras = 1;
+    private int m_currentNumberOfCameras;
 
     public static SplitScreenManager m_instance;
 
 	// Use this for initialization
-	void Awake ()
+	void Start ()
     {
         if (m_instance == null)
         {
@@ -20,9 +20,11 @@ public class SplitScreenManager : MonoBehaviour
         }
         else if (m_instance != null)
             Destroy(gameObject);
-        
+       
         m_splitCameras = new List<Camera>();
-        UpdateSplitScreen(m_currentNumberOfCameras);
+       
+        if (!GameManager.m_instance.GetScene().name.Equals("Main Menu"))
+            UpdateSplitScreen(m_currentNumberOfCameras);
     }
 	
 	// Update is called once per frame
@@ -68,12 +70,15 @@ public class SplitScreenManager : MonoBehaviour
     {
         if (m_splitCameras.Count < p_numberOfCameras)
         {
-            Camera newCamera = Instantiate(m_cameraPrefab, Vector3.zero, Quaternion.identity, transform);
-            newCamera.GetComponent<CameraFollow>().m_target = GameManager.m_instance.AddPlayer().transform;
-            m_splitCameras.Add(newCamera);
+            for (int i = m_splitCameras.Count; i < p_numberOfCameras; ++i)
+            {
+                Camera newCamera = Instantiate(m_cameraPrefab, Vector3.zero, Quaternion.identity, transform);
+                newCamera.GetComponent<CameraFollow>().m_target = GameManager.m_instance.AddPlayer().transform;
+                m_splitCameras.Add(newCamera);
+            }
         }
         else
-            for (int i = p_numberOfCameras - 1; i < m_splitCameras.Count - 1; i++)
+            for (int i = p_numberOfCameras; i < m_splitCameras.Count - 1; i++)
                 m_splitCameras[i].gameObject.SetActive(false);
     }
 
