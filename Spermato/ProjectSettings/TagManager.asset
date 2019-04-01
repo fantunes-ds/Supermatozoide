@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Progesterone
   - Main Camera
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

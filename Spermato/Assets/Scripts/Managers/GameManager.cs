@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string m_levelName;
     [SerializeField] private GameObject m_playerPrefab;
     public List<GameObject> m_playerList { private set; get; }
-    private Scene m_lastScene;
     private GameObject m_playerContainer;
+    private Transform m_spawnPoint;
+    private Scene m_lastScene;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         m_lastScene = GetScene();
         m_playerList = new List<GameObject>();
         m_playerContainer = new GameObject("Players");
+        m_spawnPoint = GameObject.FindWithTag("SpawnPoint").transform;
     }
     
     void Update()
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (m_playerContainer == null)
             m_playerContainer = new GameObject("Players");
-        GameObject newPlayer = Instantiate(m_playerPrefab, Vector3.zero, Quaternion.identity, m_playerContainer.transform);
+        GameObject newPlayer = Instantiate(m_playerPrefab, m_spawnPoint.position, Quaternion.identity, m_playerContainer.transform);
         newPlayer.name = "P" + (m_playerList.Count + 1);
         m_playerList.Add(newPlayer);
         return newPlayer;
