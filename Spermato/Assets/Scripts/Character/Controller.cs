@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour
     [Tooltip("Constant base speed for the player")]
     private float m_baseSpeed = 1.0f;
 
-    [SerializeField] [Tooltip("Adds AirTime")] [Range(0, 100)]
+    [SerializeField] [Tooltip("Adds AirTime")] [Range(0, 10)]
     private float m_airTimePercentage = 1f;
 
     [SerializeField] [Tooltip("How much should the progesterone pickups add to the jauge (0 to 1 = 0 to 100%)")] [Range(0, 1)]
@@ -66,20 +66,21 @@ public class Controller : MonoBehaviour
         if (m_rb.velocity.magnitude > 1f && m_rb.velocity.magnitude < m_maxSpeed &&
             Vector2.Angle(m_rb.velocity, transform.up) > 60)
             m_rb.AddForce((new Vector2(transform.up.x, transform.up.y) * m_airTimePercentage) /
-                          (m_rb.velocity.magnitude ));
+                          (m_rb.velocity.magnitude ), ForceMode2D.Impulse);
 
         m_zRot = Mathf.Atan2(m_leftJoyStickAxis.y,
                          m_leftJoyStickAxis.x) * Mathf.Rad2Deg + 270;
 
         if (!m_zRot.Equals(transform.rotation.eulerAngles.z))
             transform.eulerAngles = new Vector3(0, 0, m_zRot);
+        //m_rb.AddForce(new Vector2(transform.rotation.y * m_rb.velocity.x,transform.rotation.y * m_rb.velocity.y) * 1000);
     }
 
     void CheckDisplacement()
     {
         m_rightJoyStickAxis = new Vector2(Mathf.RoundToInt(Input.GetAxis(gameObject.name + "-RightStick-Horizontal")), Mathf.RoundToInt(Input.GetAxis(gameObject.name + "-RightStick-Vertical")));
 
-        if (m_rightJoyStickAxis.x.Equals(0))
+        if (m_rightJoyStickAxis.x.Equals(0) && m_rightJoyStickAxis.y.Equals(0))
         {
             m_canInput = true;
             return;
