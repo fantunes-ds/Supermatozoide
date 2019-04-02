@@ -108,10 +108,13 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(1) && m_canTrigger)
         {
-            m_rb.AddForce(transform.up * m_progesterone * m_progesteroneBoostForce,ForceMode2D.Impulse);
-            m_progesterone -= m_progesteroneLossPerBoost;
-            m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
-            m_canTrigger = false;
+            if (m_progesterone > 0)
+            {
+                m_rb.AddForce(transform.up * m_progesteroneBoostForce, ForceMode2D.Impulse);
+                m_progesterone -= m_progesteroneLossPerBoost;
+                m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
+                m_canTrigger = false;
+            }
         }
         else if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(0) && m_canTrigger == false)
             m_canTrigger = true;
