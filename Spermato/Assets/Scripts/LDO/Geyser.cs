@@ -30,7 +30,7 @@ public class Geyser : MonoBehaviour
     {
         m_timer += Time.deltaTime;
 
-        if (m_timer >= 2.0f && m_timer < 5.0f)
+        if (m_timer >= 5.0f && m_timer < 5.0f)
         {
             m_isFlowing = false;
             m_ps.Stop();
