@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ZooJohan.unity
     guid: 9c6dd861e1ef1c94d935b36c38b8df01
+  - enabled: 1
+    path: Assets/Scenes/LevelJoris.unity
+    guid: e30622068c55c3241b30c1951539c0cb
   m_configObjects: {}
