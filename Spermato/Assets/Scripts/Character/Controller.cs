@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.XR.WSA.Persistence;
 
 public class Controller : MonoBehaviour
 {
@@ -106,17 +105,18 @@ public class Controller : MonoBehaviour
 
     public void ProgesteroneGauge()
     {
-        if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(1) && m_canTrigger)
+        float m_leftTrigger = Input.GetAxisRaw(gameObject.name + "-Trigger-Left");
+        if (m_leftTrigger.Equals(1) && m_canTrigger)
         {
-            if (m_progesterone > 0)
-            {
-                m_rb.AddForce(transform.up * m_progesteroneBoostForce, ForceMode2D.Impulse);
-                m_progesterone -= m_progesteroneLossPerBoost;
-                m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
-                m_canTrigger = false;
-            }
+            if (m_progesterone <= 0)
+                return;
+
+            m_rb.AddForce(transform.up * m_progesteroneBoostForce, ForceMode2D.Impulse);
+            m_progesterone -= m_progesteroneLossPerBoost;
+            m_progesterone = Mathf.Clamp(m_progesterone, 0, m_maxProgesterone);
+            m_canTrigger = false;
         }
-        else if (Input.GetAxisRaw(gameObject.name + "-Trigger-Right").Equals(0) && m_canTrigger == false)
+        else if (m_leftTrigger.Equals(0) && m_canTrigger == false)
             m_canTrigger = true;
     }
 

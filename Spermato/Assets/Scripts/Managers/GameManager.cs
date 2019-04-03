@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             m_spawnPoint = GameObject.FindWithTag("SpawnPoint").transform.position;
         else
             m_spawnPoint = Vector3.zero;
+
         foreach (GameObject m_go in m_playerList)
         {
             m_go.transform.position = m_spawnPoint;

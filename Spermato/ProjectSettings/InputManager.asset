@@ -518,8 +518,8 @@ InputManager:
     axis: 4
     joyNum: 4
   - serializedVersion: 3
-    m_Name: P1-Trigger-Right
-    descriptiveName: Joystick Right Trigger
+    m_Name: P1-Trigger-Left
+    descriptiveName: Joystick Left Trigger
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -534,8 +534,8 @@ InputManager:
     axis: 8
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P2-Trigger-Right
-    descriptiveName: Joystick Right Trigger
+    m_Name: P2-Trigger-Left
+    descriptiveName: Joystick Left Trigger
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -547,11 +547,11 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P3-Trigger-Right
-    descriptiveName: Joystick Right Trigger
+    m_Name: P3-Trigger-Left
+    descriptiveName: Joystick Left Trigger
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -563,11 +563,11 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 8
     joyNum: 3
   - serializedVersion: 3
-    m_Name: P4-Trigger-Right
-    descriptiveName: Joystick Right Trigger
+    m_Name: P4-Trigger-Left
+    descriptiveName: Joystick Left Trigger
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -579,5 +579,5 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 8
     joyNum: 4

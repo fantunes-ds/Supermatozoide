@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bounce : MonoBehaviour {
-
+public class Bounce : MonoBehaviour
+{
     [SerializeField][Range(0,10)] private float m_pushForce = 1.0f;
     private Rigidbody2D m_rb;
 
