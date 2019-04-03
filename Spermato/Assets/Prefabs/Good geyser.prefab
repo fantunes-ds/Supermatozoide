@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325335585652266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.9, y: 4.6, z: -0.01}
+  m_LocalPosition: {x: -74.57724, y: -59.6033, z: -0.01}
   m_LocalScale: {x: 5.3097, y: 5.3097, z: 5.3097}
   m_Children:
   - {fileID: 4815710332449340}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec438248798b87942bb5109f29e63156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_geyserType: 0
+  m_pushForce: 0
 --- !u!198 &198312081446911192
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3485,13 +3485,13 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
-    collisionMode: 0
-    colliderForce: 0
+    type: 1
+    collisionMode: 1
+    colliderForce: 1.31
     multiplyColliderForceByParticleSize: 0
-    multiplyColliderForceByParticleSpeed: 0
+    multiplyColliderForceByParticleSpeed: 1
     multiplyColliderForceByCollisionAngle: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
@@ -3608,7 +3608,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
