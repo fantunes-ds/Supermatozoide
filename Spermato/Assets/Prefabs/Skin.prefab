@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114655713805574660}
   - component: {fileID: 114239916006732358}
   - component: {fileID: 50185298374856042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skin
   m_TagString: Player
   m_Icon: {fileID: 0}
