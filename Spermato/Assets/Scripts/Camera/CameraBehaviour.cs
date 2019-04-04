@@ -16,27 +16,21 @@ public class CameraBehaviour : MonoBehaviour
     private float m_cameraVelocityY;
 
     void Start()
+
     {
-        if (m_target == null || m_targetRb == null)
+        if (m_targetRb == null)
         {
-            try
-            {
-                m_target = GameObject.FindGameObjectWithTag("Player").transform;
-                m_targetRb = m_target.gameObject.GetComponent<Rigidbody2D>();
-                transform.position = m_target.position;
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.Message);
-            }
+            m_targetRb = m_target.gameObject.GetComponent<Rigidbody2D>();
+            m_camPos = m_target.position;
+            transform.position = m_target.position;
         }
     }
-
 
     void FixedUpdate()
     {
         if (m_target == null || m_targetRb == null)
             return;
+
         Vector2 m_desiredDirection = (Vector2) m_target.position + (m_targetRb.velocity * m_offsetAmount);
         m_camPos = m_target.position;
         m_camPos = new Vector3(

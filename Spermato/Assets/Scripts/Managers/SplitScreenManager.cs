@@ -73,6 +73,7 @@ public class SplitScreenManager : MonoBehaviour
             for (int i = m_splitCameras.Count; i < p_numberOfCameras; ++i)
             {
                 Camera newCamera = Instantiate(m_cameraPrefab, Vector3.zero, Quaternion.identity, transform);
+                newCamera.name = "CameraP" + (GameManager.m_instance.m_playerList.Count + 1);
                 newCamera.GetComponent<CameraBehaviour>().m_target = GameManager.m_instance.AddPlayer().transform;
                 m_splitCameras.Add(newCamera);
             }
