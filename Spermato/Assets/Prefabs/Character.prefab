@@ -165,7 +165,7 @@ MonoBehaviour:
   m_baseSpeed: 70
   m_airTimePercentage: 0.8
   m_progesteronePickupValue: 0.1
-  m_progesteroneBoostForce: 15
+  m_progesteroneBoostForce: 10
   m_progesteroneLossPerBoost: 0.2
   m_maxProgesterone: 1
   m_maxSpeed: 70
