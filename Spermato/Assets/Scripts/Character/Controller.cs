@@ -41,11 +41,14 @@ public class Controller : MonoBehaviour
     private Vector2 m_leftJoyStickAxis;
 
     private Rigidbody2D m_rb;
+    private SpriteRenderer m_playerSprite;
+    [SerializeField] private List<Sprite> m_spriteList;
 
     // Use this for initialization
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
+        m_playerSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -82,6 +85,7 @@ public class Controller : MonoBehaviour
         if (m_rightJoyStickAxis.x.Equals(0) && m_rightJoyStickAxis.y.Equals(0))
         {
             m_canInput = true;
+            m_playerSprite.sprite = m_spriteList[0];
             return;
         }
 
@@ -91,7 +95,12 @@ public class Controller : MonoBehaviour
         int axisTargetValue = 1;
 
         if (m_isLeft)
+        {
             axisTargetValue *= -1;
+            m_playerSprite.sprite = m_spriteList[1];
+        }
+        else 
+            m_playerSprite.sprite = m_spriteList[2];
         
 
         if (m_rightJoyStickAxis.x.Equals(axisTargetValue))
