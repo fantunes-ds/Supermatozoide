@@ -145,12 +145,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576480141590824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de686854d84af74b8087330949b1dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pushForce: 3
+  m_pushForce: 2
 --- !u!114 &114465646659807512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,13 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a578d8ab00d8af34aa87c086ff106203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseSpeed: 50
+  m_baseSpeed: 70
   m_airTimePercentage: 0.8
   m_progesteronePickupValue: 0.1
   m_progesteroneBoostForce: 10
   m_progesteroneLossPerBoost: 0.2
   m_maxProgesterone: 1
-  m_maxSpeed: 50
+  m_maxSpeed: 70
 --- !u!114 &114828945434516098
 MonoBehaviour:
   m_ObjectHideFlags: 1
