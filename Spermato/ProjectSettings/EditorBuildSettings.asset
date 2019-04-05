@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Filipe/Main Menu.unity
     guid: 1dede793e4942364aba14d89b9b7e8d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelAdrien.unity
     guid: 1a1dbf0ac2c466843999f916d66d8be9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ZooJohan.unity
     guid: 9c6dd861e1ef1c94d935b36c38b8df01
   - enabled: 1
-    path: Assets/Scenes/LevelJoris.unity
+    path: Assets/Scenes/LevelRelease.unity
     guid: 055aa37607017a846b51cecafb71e6fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelSuzanne.unity
     guid: e924234b1e0f25a4ebaaf9f8fe67d59b
   m_configObjects: {}
