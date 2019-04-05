@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffff6ea76c0b774386d81310c6ea3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelName: DebugScene
+  m_levelName: LevelJoris
   m_playerPrefab: {fileID: 1575503033589136, guid: 08015e95c952ae44eaf69155807ba59a,
     type: 2}
   m_progesteroneGaugePrefab: {fileID: 1312770355175808, guid: 6e887b246230fd4429265418deac4a91,
