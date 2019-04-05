@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SplitScreenManager : MonoBehaviour
 {
-    [SerializeField] private Camera m_cameraPrefab;
-    private List<Camera> m_splitCameras;
-    private int m_currentNumberOfCameras;
-
     public static SplitScreenManager m_instance;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField] private Camera m_cameraPrefab;
+    private List<Camera> m_splitCameras;
+
+    private int m_currentNumberOfCameras;
+
+    void Start()
     {
         if (m_instance == null)
         {
@@ -20,17 +19,16 @@ public class SplitScreenManager : MonoBehaviour
         }
         else if (m_instance != null)
             Destroy(gameObject);
-       
+
         m_splitCameras = new List<Camera>();
-       
+
         if (!GameManager.m_instance.GetScene().name.Equals("Main Menu"))
             UpdateSplitScreen(m_currentNumberOfCameras);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
             UpdateSplitScreen(++m_currentNumberOfCameras);
     }
 
@@ -40,12 +38,12 @@ public class SplitScreenManager : MonoBehaviour
         {
             case 1:
                 CheckCameraAvailability(p_numberOfScreens);
-                m_splitCameras[0].rect = new Rect(0,0,1,1);
+                m_splitCameras[0].rect = new Rect(0, 0, 1, 1);
                 break;
             case 2:
                 CheckCameraAvailability(p_numberOfScreens);
-                m_splitCameras[0].rect = new Rect(0f,0,0.499f,1);
-                m_splitCameras[1].rect = new Rect(0.5f,0,0.5f,1);
+                m_splitCameras[0].rect = new Rect(0f, 0, 0.499f, 1);
+                m_splitCameras[1].rect = new Rect(0.5f, 0, 0.5f, 1);
                 break;
             case 3:
                 CheckCameraAvailability(p_numberOfScreens);

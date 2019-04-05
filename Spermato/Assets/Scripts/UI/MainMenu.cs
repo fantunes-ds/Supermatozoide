@@ -6,19 +6,16 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Color[] m_colors;
     public List<Image> m_masks;
     public List<TextMeshProUGUI> m_status;
     public List<TextMeshProUGUI> m_playerName;
+    public Color[] m_colors;
     private int m_connections = 0;
 
-	// Use this for initialization
-	void Start ()
+    void Start()
     {
         foreach (TextMeshProUGUI t in m_status)
-        {
             t.text = "Unplugged";
-        }
 
         StartCoroutine(CheckConnections());
     }
@@ -45,6 +42,7 @@ public class MainMenu : MonoBehaviour
             m_playerName[i].color = m_colors[0];
             StartCoroutine(FadeOut(m_masks[i]));
         }
+
         SplitScreenManager.m_instance.SetCameraNumber(m_connections);
         yield return new WaitForSeconds(2);
     }
@@ -66,7 +64,6 @@ public class MainMenu : MonoBehaviour
             p_image.color = new Color(p_image.color.r, p_image.color.g,
                                       p_image.color.b, f);
             yield return null;
-
         }
     }
 }

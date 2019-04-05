@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    Vector3 m_camPos = Vector3.zero;
     public Transform m_target;
     private Rigidbody2D m_targetRb;
+
+    Vector3 m_camPos = Vector3.zero;
     [SerializeField] private Vector3 m_offset = new Vector3(0, 0, -10);
+    
     [SerializeField] private float m_travelDelay = 0.3f;
     [SerializeField] private float m_cameraMaxVelocity = 200;
     [SerializeField] private float m_offsetAmount = 5;
@@ -35,11 +34,10 @@ public class CameraBehaviour : MonoBehaviour
 
         Vector2 m_desiredDirection = (Vector2) m_target.position + (m_targetRb.velocity * m_offsetAmount);
         m_camPos = m_target.position;
-        m_camPos = new Vector3(
-            Mathf.SmoothDamp(transform.position.x, m_desiredDirection.x, ref m_cameraVelocityX, m_travelDelay,
-                m_cameraMaxVelocity, Time.fixedDeltaTime),
-            Mathf.SmoothDamp(transform.position.y, m_desiredDirection.y, ref m_cameraVelocityY, m_travelDelay,
-                m_cameraMaxVelocity, Time.fixedDeltaTime));
+        m_camPos = new Vector3(Mathf.SmoothDamp(transform.position.x, m_desiredDirection.x,
+                                   ref m_cameraVelocityX,m_travelDelay, m_cameraMaxVelocity, Time.fixedDeltaTime),
+                               Mathf.SmoothDamp(transform.position.y, m_desiredDirection.y,
+                                   ref m_cameraVelocityY, m_travelDelay, m_cameraMaxVelocity, Time.fixedDeltaTime));
     }
 
     void LateUpdate()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Geyser : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class Geyser : MonoBehaviour
     private float m_timer;
     private bool m_isFlowing;
 
-    // Use this for initialization
     void Start()
     {
         m_ps = GetComponentInChildren<ParticleSystem>();
@@ -20,7 +17,6 @@ public class Geyser : MonoBehaviour
         ResetToActive();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckStatus();
@@ -43,7 +39,6 @@ public class Geyser : MonoBehaviour
     void ResetToActive()
     {
         m_timer = 0;
-
         m_isFlowing = true;
         m_ps.Play();
     }

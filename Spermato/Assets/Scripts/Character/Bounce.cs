@@ -1,17 +1,14 @@
-﻿        using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
-    [SerializeField][Range(0,10)] private float m_pushForce = 1.0f;
+    [SerializeField] [Range(0, 10)] private float m_pushForce = 1.0f;
     private Rigidbody2D m_rb;
 
-	// Use this for initialization
-	void Start ()
+    void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-	}
+    }
 
     private void OnCollisionEnter2D(Collision2D p_other)
     {

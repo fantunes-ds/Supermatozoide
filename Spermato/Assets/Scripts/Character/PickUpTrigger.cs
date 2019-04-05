@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickUpTrigger : MonoBehaviour
 {
@@ -13,6 +11,5 @@ public class PickUpTrigger : MonoBehaviour
             GetComponent<Controller>().AddProgesterone();
             Destroy(p_other.gameObject);
         }
-
     }
 }

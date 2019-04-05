@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ProgesteroneGauge : MonoBehaviour
-{ 
+{
     public GameObject m_targetPlayer;
+    private Controller m_playerController;
     [SerializeField] private Image m_progesteroneGauge;
     private float m_progesteroneValue;
-    private Controller m_playerController;
 
-    // Use this for initialization
     void Start()
     {
         if (m_targetPlayer == null)
@@ -19,7 +16,6 @@ public class ProgesteroneGauge : MonoBehaviour
         m_playerController = m_targetPlayer.GetComponent<Controller>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = m_targetPlayer.transform.position + new Vector3(1, 0, -2);
