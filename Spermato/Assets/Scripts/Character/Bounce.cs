@@ -15,6 +15,9 @@ public class Bounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D p_other)
     {
+        if (m_rb == null)
+            return;
+
         Vector2 bounceDir = Vector2.Reflect(m_rb.velocity, p_other.transform.up);
         m_rb.AddForce(Vector2.right * m_pushForce, ForceMode2D.Impulse);
     }
