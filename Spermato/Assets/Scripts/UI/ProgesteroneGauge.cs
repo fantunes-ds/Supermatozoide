@@ -24,7 +24,7 @@ public class ProgesteroneGauge : MonoBehaviour
     {
         transform.position = m_targetPlayer.transform.position + new Vector3(1, 0, -2);
 
-            m_progesteroneValue = m_playerController.m_progesterone / m_playerController.m_maxProgesterone;
-            m_progesteroneGauge.fillAmount = m_progesteroneValue;
+        m_progesteroneValue = m_playerController.m_progesterone / m_playerController.m_maxProgesterone;
+        m_progesteroneGauge.fillAmount = m_progesteroneValue;
     }
 }
