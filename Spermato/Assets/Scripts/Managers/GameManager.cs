@@ -62,11 +62,18 @@ public class GameManager : MonoBehaviour
         if (m_playerContainer == null)
             m_playerContainer = new GameObject("Players");
 
+        if (m_UIContainer == null)
+           m_UIContainer = GameObject.FindWithTag("UIHolder");
+
+        if (m_playerContainer == null || m_UIContainer == null)
+            return new GameObject("ERROR GAME MANAGER ADD PLAYER");
+
         GameObject newPlayer =
             Instantiate(m_playerPrefab, m_spawnPoint, Quaternion.identity, m_playerContainer.transform);
 
         newPlayer.name = "P" + (m_playerList.Count + 1);
         m_playerList.Add(newPlayer);
+
 
         GameObject newGauge = Instantiate(m_progesteroneGaugePrefab, newPlayer.transform.position,
             Quaternion.identity, m_UIContainer.transform);
