@@ -104,4 +104,4 @@ MonoBehaviour:
   m_offset: {x: 0, y: 0, z: -2}
   m_travelDelay: 0.24
   m_cameraMaxVelocity: 15
-  m_offsetAmount: 0.69
+  m_offsetAmount: 0.6

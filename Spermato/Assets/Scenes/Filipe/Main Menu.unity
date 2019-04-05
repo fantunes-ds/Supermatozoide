@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelName: LevelJoris
-  m_playerPrefab: {fileID: 1576480141590824, guid: 2a2d945f500c6ed4e803f48d3b93f365,
+  m_playerPrefab: {fileID: 1575503033589136, guid: 08015e95c952ae44eaf69155807ba59a,
     type: 2}
 --- !u!4 &1541614741
 Transform:
