@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491668646361400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.67976, y: 53.915432, z: 0.0712358}
+  m_LocalPosition: {x: 28.520744, y: -34.55726, z: 0.0712358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,5 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelName: DebugScene
-  m_playerPrefab: {fileID: 1576480141590824, guid: 2a2d945f500c6ed4e803f48d3b93f365,
+  m_playerPrefab: {fileID: 1575503033589136, guid: 08015e95c952ae44eaf69155807ba59a,
     type: 2}
+  m_progesteroneGaugePrefab: {fileID: 1312770355175808, guid: 6e887b246230fd4429265418deac4a91,
+    type: 2}
+  m_UIContainer: {fileID: 0}

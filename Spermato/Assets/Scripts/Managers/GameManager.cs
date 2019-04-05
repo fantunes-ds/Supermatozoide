@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager m_instance; 
+    public static GameManager m_instance;
     [SerializeField] private string m_levelName;
     [SerializeField] private GameObject m_playerPrefab;
+    [SerializeField] private GameObject m_progesteroneGaugePrefab;
+    [SerializeField] private GameObject m_UIContainer;
     public List<GameObject> m_playerList { private set; get; }
     private GameObject m_playerContainer;
     private Vector3 m_spawnPoint;
@@ -31,9 +33,8 @@ public class GameManager : MonoBehaviour
             m_spawnPoint = GameObject.FindWithTag("SpawnPoint").transform.position;
         else
             m_spawnPoint = Vector3.zero;
-
     }
-    
+
     void Update()
     {
         if (m_lastScene == SceneManager.GetActiveScene())
@@ -60,9 +61,17 @@ public class GameManager : MonoBehaviour
     {
         if (m_playerContainer == null)
             m_playerContainer = new GameObject("Players");
-        GameObject newPlayer = Instantiate(m_playerPrefab, m_spawnPoint, Quaternion.identity, m_playerContainer.transform);
+
+        GameObject newPlayer =
+            Instantiate(m_playerPrefab, m_spawnPoint, Quaternion.identity, m_playerContainer.transform);
+
         newPlayer.name = "P" + (m_playerList.Count + 1);
         m_playerList.Add(newPlayer);
+
+        GameObject newGauge = Instantiate(m_progesteroneGaugePrefab, newPlayer.transform.position,
+            Quaternion.identity, m_UIContainer.transform);
+        newGauge.GetComponent<ProgesteroneGauge>().m_targetPlayer = newPlayer;
+
         return newPlayer;
     }
 

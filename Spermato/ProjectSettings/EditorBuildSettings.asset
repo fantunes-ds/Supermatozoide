@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Filipe/DebugScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/Filipe/Main Menu.unity
     guid: 1dede793e4942364aba14d89b9b7e8d4
   - enabled: 1
@@ -19,5 +16,8 @@ EditorBuildSettings:
     guid: 9c6dd861e1ef1c94d935b36c38b8df01
   - enabled: 1
     path: Assets/Scenes/LevelJoris.unity
-    guid: e30622068c55c3241b30c1951539c0cb
+    guid: 055aa37607017a846b51cecafb71e6fd
+  - enabled: 1
+    path: Assets/Scenes/LevelSuzanne.unity
+    guid: e924234b1e0f25a4ebaaf9f8fe67d59b
   m_configObjects: {}

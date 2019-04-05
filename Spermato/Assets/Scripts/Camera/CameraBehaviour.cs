@@ -8,7 +8,7 @@ public class CameraBehaviour : MonoBehaviour
     Vector3 m_camPos = Vector3.zero;
     public Transform m_target;
     private Rigidbody2D m_targetRb;
-    [SerializeField] private Vector3 m_offset = new Vector3(0, 0, -1);
+    [SerializeField] private Vector3 m_offset = new Vector3(0, 0, -10);
     [SerializeField] private float m_travelDelay = 0.3f;
     [SerializeField] private float m_cameraMaxVelocity = 200;
     [SerializeField] private float m_offsetAmount = 5;
@@ -16,8 +16,10 @@ public class CameraBehaviour : MonoBehaviour
     private float m_cameraVelocityY;
 
     void Start()
-
     {
+        if (m_target == null)
+            return;
+
         if (m_targetRb == null)
         {
             m_targetRb = m_target.gameObject.GetComponent<Rigidbody2D>();
